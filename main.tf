@@ -125,6 +125,7 @@ resource "aws_instance" "hashicat" {
   associate_public_ip_address = true
   subnet_id                   = aws_subnet.hashicat.id
   vpc_security_group_ids      = [aws_security_group.hashicat.id]
+  Department                  = devops
 
   tags = {
     Name = "${var.prefix}-hashicat-instance"
@@ -197,3 +198,4 @@ resource "aws_key_pair" "hashicat" {
   key_name   = local.private_key_filename
   public_key = tls_private_key.hashicat.public_key_openssh
 }
+
